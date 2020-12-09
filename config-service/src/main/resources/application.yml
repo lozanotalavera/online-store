@@ -1,21 +1,18 @@
-server:
-  port: 8081
-
 spring:
-  profiles:
-    active: composite
+  application:
+    name: config-service
   cloud:
     config:
       server:
-        composite:
-          -
-            type: git
-            cloneOnStart: true
-            uri: https://github.com/lozanotalavera/online-store.git
-            searchPaths: config-data
-            username: ${GIT_USER}
-            password: ${GIT_PASSWORD}
+        git:
+          uri: https://github.com/lozanotalavera/online-store.git
+          searchPaths: config-data
+          username: ${GIT_USER}
+          password: ${GIT_PASSWORD}
   security:
     user:
       name: root
       password: s3cr3t
+
+server:
+  port: 8081
